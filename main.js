@@ -1,4 +1,3 @@
-// (Kaylane) - Adicionei as funções pro modal e removi o sistema de tradução (A tradução era instável e deixava a aplicação lenta)
 // Receber os ingredientes do usuário
 // Buscar as receitas na API
 // Exibir as receitas na tela

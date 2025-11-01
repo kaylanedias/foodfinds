@@ -8,7 +8,9 @@
 
 body {
     font-family: 'Merriweather', serif;
-    background-color: #f4efd6; /* Cor de fundo da página */
+    background-image: url(assets/background.png); /* Imagem para o background */
+    background-size: cover; /* Preencher a tela completa */
+    background-attachment: fixed; /* Fixar o background */
     color: #594234; /* Cor do texto padrão */
     overflow-x: hidden;
 }
@@ -493,4 +495,17 @@ footer strong {
     box-shadow: none;
     transform: none;
     color: #888; /* Texto cinza */
+}
+
+@media (max-width: 1280px){
+    .main-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80dvh;
+        width: 80dvw;
+        margin: auto;
+        padding: 30px;
+        gap: 48px;
+}
 }
