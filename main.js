@@ -112,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Prepara a interface para a busca
         mainContainer.classList.add("hidden"); // Esconde a tela de busca
-        resultsContainer.style.display = "none"; // Esconde resultados antigos
+        resultsGrid.innerHTML = ''; // Limpa resultados anteriores
+        paginationContainer.style.display = 'none'; // Esconde a paginação
 
         // A função  try é utilizada pra envolver um bloco de código que pode gerar erros
         try {
@@ -138,16 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // 3. Armazena todas as receitas buscadas e exibe a primeira página
             allFetchedRecipes = recipes;
             // Reseta pra página 1
-            currentPage = 1; 
+            currentPage = 1;
             // Exibe a página atual
             displayCurrentPage();
 
             // Mostra os resultados e a paginação
             resultsContainer.style.display = 'block';
             paginationContainer.style.display = 'flex';
-
-            // 4. Renderiza as receitas na tela
-            renderRecipes(recipes);
 
             // Mostra o container de resultados
             resultsContainer.style.display = "block";
@@ -160,7 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
             resultsGrid.innerHTML =
                 "<p>Erro ao buscar receitas. Tente novamente.</p>";
             resultsContainer.style.display = "block"; // Mostra a msg de erro
-            
+            resultsContainer.scrollIntoView({ behavior: 'smooth' }); // Rola a tela até os resultados
+
         } finally {
             // A função finally é executada após o try e catch, independentemente do resultado
             // Independentemente de sucesso ou erro, esconde o loader
