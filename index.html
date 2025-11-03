@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="assets/src/icons/itensIcon.ICO">
+    <link rel="stylesheet" href="style.css">
+    <title>Foody - Gerador de Receitas</title>
+</head>
+
+<body>
+    <main>
+
+        <!-- Menu Principal -->
+        <section class="main-section search-container">
+
+            <!-- Div da Pesquisa -->
+            <div class="search-container">
+                <p id="nome">Foody Finds - Gerador de Receitas</p>
+                <h1>Não sabe o que cozinhar?</h1>
+                <p>Digite os ingredientes que você tem em casa (separados por vírgula) e descubra receitas incríveis.
+                </p>
+
+                <div class="input-group">
+                    <input type="text" id="ingredient-input" placeholder="ex: potato, egg, milk">
+                    <button id="search-btn">Buscar</button>
+                </div>
+            </div>
+
+            <!-- Div da Logo -->
+            <div class="image-container">
+                <img src="./assets/Logo.png" alt="logo">
+            </div>
+        </section>
+
+        <!-- Loader -->
+        <div id="loader" class="loader">
+            <p>Carregando...</p>
+        </div>
+
+        <!-- Section Receitas -->
+        <section class="section-recipe">
+            <h1>Lista de Receitas</h1>
+
+            <!-- Receitas -->
+            <div class="general-recipes" id="recipes-grid">
+            </div>
+
+            <div class="pagination-container" id="pagination-container">
+                <button id="prev-page-btn" class="pagination-btn">Anterior</button>
+                <span id="page-indicator">Página 1</span>
+                <button id="next-page-btn" class="pagination-btn">Próximo</button>
+            </div>
+        </section>
+
+        <!-- Modal das receitas -->
+        <div class="modal-overlay" id="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+
+                <div id="modal-details-content">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Desenvolvido por <strong>Albérico, Kaylane, Matheus, Rodolfo e Ryan </strong></p>
+        <p>Todos os direitos reservados © 2025</p>
+    </footer>
+</body>
+<script src="main.js"></script>
+
+</html>
