@@ -79,50 +79,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Função que gerencia o fluxo de busca e exibição
     async function handleSearch() {
-        // Pega os ingredientes digitados
+        // Identifica os ingredientes do input
         const ingredientesString = ingredientInput.value.trim();
 
         // Verifica se o input está vazio
         if (ingredientesString === "") {
+            // Se estiver, exibe um alerta ao usuário
             alert("Por favor, digite os ingredientes.");
+            // Encerra a função para evitar buscas vazias
             return;
         }
 
+        // Realiza a formatação dos ingredientes
         currentUserIngredients = ingredientesString
             .split(",") // Divide a string em um array
-            .map((ing) => ing.trim().toLowerCase()) // Limpa espaços e formata
+            .map((ing) => ing.trim().toLowerCase()) // Limpa espaços
             .filter((ing) => ing.length > 0); // Remove entradas vazias
 
+        // Constrói a string para a API com um separador adequado
         const apiIngredientsString = currentUserIngredients.join(",+");
 
+        mainContainer.classList.add("hidden"); // Esconde a seção principal
+        resultsGrid.innerHTML = ''; // Limpa resultados anteriores
+        paginationContainer.style.display = 'none'; // Esconde a paginação
 
-        mainContainer.classList.add("hidden"); 
-        resultsGrid.innerHTML = ''; 
-        paginationContainer.style.display = 'none'; 
-
+        // Tenta buscar as receitas
         try {
             const recipes = await fetchRecipes(
                 apiIngredientsString
             );
 
-            if (recipes.length === 0) {
+            // Verifica se encontrou alguma receita
+            if (recipes.length === 0) { // Se nenhuma receita for encontrada
+                // Mostra uma mensagem ao usuário
                 resultsGrid.innerHTML =
                     "<p>Nenhuma receita encontrada com esses ingredientes.</p>";
+                // Limpa as receitas armazenadas e esconde a paginação
                 allFetchedRecipes = [];
                 paginationContainer.style.display = 'none';
                 resultsContainer.style.display = 'block';
                 return;
             }
 
+            // Armazena todas as receitas buscadas
             allFetchedRecipes = recipes;
-            currentPage = 1;
-            displayCurrentPage();
+            currentPage = 1; // Reseta para a primeira página
+            displayCurrentPage(); // Exibe a primeira página de resultados
 
+            // Mostra o container de resultados e a paginação
             resultsContainer.style.display = 'block';
             paginationContainer.style.display = 'flex';
 
+            // Rola a página até os resultados
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
 
+        // Captura erros na busca (Sintaxe, limite da API, etc)
         } catch (error) {
             console.error("Erro ao buscar receitas:", error);
             resultsGrid.innerHTML =
@@ -130,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultsContainer.style.display = "block";
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
 
+        // Esconde o loader após a busca
         } finally {
             loader.style.display = "none";
         }
@@ -185,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Adiciona a classe CSS
             card.className = "recipe-card";
 
-            // Adicionam o ID da receita no 'dataset' (Precisamos disso pra função de exibir detalhes)
+            // Adicionam o ID da receita no "dataset"
             card.dataset.recipeId = recipe.id;
 
             // Preenche o card com a imagem e título da receita
