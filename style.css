@@ -9,8 +9,9 @@
 body {
     font-family: 'Merriweather', serif;
     background-image: url(assets/background.png); /* Imagem para o background */
-    background-size: cover; /* Preencher a tela completa */
+    background-size: fill; /* Preencher a tela completa */
     background-attachment: fixed; /* Fixar o background */
+    background-position-x: 50%; /* Ajustando a posição do background*/
     color: #594234; /* Cor do texto padrão */
     overflow-x: hidden;
 }
