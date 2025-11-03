@@ -7,7 +7,7 @@
 // Sistema de paginação
 
 // Chave API
-const API_KEY = "e30e10cd756f41b0b7f745fc090e1bee";
+const API_KEY = "743c537ae764431c95dcfedb456c9054";
 
 // Array para armazenar os ingredientes do usuário
 let currentUserIngredients = [];
